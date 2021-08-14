@@ -1,14 +1,15 @@
 import galleryItems from './js/app.js';
 
-const galleryContainer = document.querySelector('.js-gallery');
+//REFS
+const galleryUl = document.querySelector('.js-gallery');
 const lightBox = document.querySelector('.js-lightbox');
-const imagLightBox = document.querySelector('.lightbox__image');
+const imgLightBox = document.querySelector('.lightbox__image');
 const overlay = document.querySelector('.lightbox__overlay');
 
-const cardsGalerry = createGalleryElements(galleryItems);
+const elementsGallery = createGalleryElements(galleryItems);
 
-galleryContainer.addEventListener('click', onGalerryContainerClick);
-galleryContainer.insertAdjacentHTML('beforeend', cardsGalerry);
+galleryUl.addEventListener('click', onGalerryContainerClick);
+galleryUl.insertAdjacentHTML('beforeend', elementsGallery);
 
 function createGalleryElements(galleryItems) {
   return galleryItems.map(({ preview, original, description }) => {
@@ -56,7 +57,7 @@ function onGalerryContainerClick(evt) {
   const elem = evt.target;
   const srcElem = elem.dataset.source;
   onOpenModal();
-  imagLightBox.src = srcElem;
+  imgLightBox.src = srcElem;
 }
  
 function onOpenModal(evt) {
